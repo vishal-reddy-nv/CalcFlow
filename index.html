@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CalcFlow is a state-of-the-art, secure, eval-free calculator extension for Google Chrome. Experience premium glassmorphism, multi-theme customization, integrated history, motivational widgets, and scratchpad productivity utilities offline.">
+  <meta name="keywords" content="chrome extension calculator, glassmorphic calculator, productivity extension, eval-free calculator, math parser extension, mv3 chrome extension">
+  <title>CalcFlow — Premium Glassmorphic Chrome Extension Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+
+  <!-- ============================================================================
+       NAVIGATION HEADER
+       ============================================================================ -->
+  <header class="header-nav" id="mainHeader">
+    <div class="container nav-container">
+      <a href="#" class="nav-brand" id="navLogo">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M7 10H17M12 7V17M7 14H17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span>CalcFlow</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#demo" class="nav-link">Live Sandbox</a>
+        <a href="#support" class="nav-link">Support & FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Cyclic Theme Trigger -->
+        <button id="globalThemeToggle" class="btn-theme-cycle" title="Cycle Theme (Dark, Light, Neon Purple)" aria-label="Cycle Website Theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+          </svg>
+        </button>
+        <a href="#demo" class="btn-primary" id="headerCtaBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+          Add to Chrome
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================================
+       HERO BANNER
+       ============================================================================ -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 22 8.5 12 15 2 8.5 12 2"/>
+            <path d="M2 15.5l10 6.5 10-6.5M2 12l10 6.5 10-6.5"/>
+          </svg>
+          Manifest V3 Security Certified
+        </div>
+        <h1 class="hero-title" id="mainHeroTitle">The Calculator Extension, <span>Redefined.</span></h1>
+        <p class="hero-subtitle">
+          Say goodbye to plain, boring system popups. CalcFlow offers a stunning <strong>glassmorphic UI</strong>, multiple vivid custom themes, an eval-free secure mathematical parser, and micro-productivity panels loaded right next to your equation screen.
+        </p>
+        <div class="hero-actions">
+          <a href="#demo" class="btn-primary">
+            Try Free Sandbox
+          </a>
+          <a href="#features" class="btn-secondary">
+            Explore Features
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-mockup-wrapper">
+          <div class="hero-mockup-header">
+            <span class="hero-mockup-dot r"></span>
+            <span class="hero-mockup-dot y"></span>
+            <span class="hero-mockup-dot g"></span>
+          </div>
+          <!-- Inline SVG representing beautiful UI mockup of the dashboard -->
+          <svg class="hero-mockup-img" width="340" height="420" viewBox="0 0 340 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="340" height="420" rx="16" fill="url(#mockupBg)" />
+            
+            <!-- Glassmorphic panel -->
+            <rect x="15" y="15" width="310" height="390" rx="12" fill="rgba(255, 255, 255, 0.03)" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1"/>
+            
+            <!-- Top Screen Mockup -->
+            <rect x="25" y="30" width="290" height="85" rx="8" fill="rgba(0, 0, 0, 0.25)" stroke="rgba(255, 255, 255, 0.05)" />
+            <text x="300" y="65" fill="#94a3b8" font-size="14" font-weight="600" text-anchor="end">42 × 3 + Math.π</text>
+            <text x="300" y="100" fill="#ffffff" font-size="28" font-weight="700" text-anchor="end">= 129.14159</text>
+            
+            <!-- Side buttons indicators -->
+            <rect x="25" y="135" width="60" height="40" rx="6" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="55" y="160" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">C</text>
+            
+            <rect x="100" y="135" width="60" height="40" rx="6" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="130" y="160" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">(</text>
+            
+            <rect x="175" y="135" width="60" height="40" rx="6" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="205" y="160" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">)</text>
+            
+            <rect x="250" y="135" width="65" height="40" rx="6" fill="rgba(99, 102, 241, 0.15)" stroke="rgba(99, 102, 241, 0.25)"/>
+            <text x="282.5" y="160" fill="#818cf8" font-size="16" font-weight="600" text-anchor="middle">÷</text>
+
+            <!-- Numbers -->
+            <rect x="25" y="190" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="55" y="215" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">7</text>
+            
+            <rect x="100" y="190" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="130" y="215" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">8</text>
+            
+            <rect x="175" y="190" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="205" y="215" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">9</text>
+            
+            <rect x="250" y="190" width="65" height="40" rx="6" fill="rgba(99, 102, 241, 0.15)" stroke="rgba(99, 102, 241, 0.25)"/>
+            <text x="282.5" y="215" fill="#818cf8" font-size="16" font-weight="600" text-anchor="middle">×</text>
+
+            <rect x="25" y="245" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="55" y="270" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">4</text>
+            
+            <rect x="100" y="245" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="130" y="270" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">5</text>
+            
+            <rect x="175" y="245" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="205" y="270" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">6</text>
+            
+            <rect x="250" y="245" width="65" height="40" rx="6" fill="rgba(99, 102, 241, 0.15)" stroke="rgba(99, 102, 241, 0.25)"/>
+            <text x="282.5" y="270" fill="#818cf8" font-size="16" font-weight="600" text-anchor="middle">−</text>
+
+            <rect x="25" y="300" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="55" y="325" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">1</text>
+            
+            <rect x="100" y="300" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="130" y="325" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">2</text>
+            
+            <rect x="175" y="300" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="205" y="325" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">3</text>
+            
+            <rect x="250" y="300" width="65" height="40" rx="6" fill="rgba(99, 102, 241, 0.15)" stroke="rgba(99, 102, 241, 0.25)"/>
+            <text x="282.5" y="325" fill="#818cf8" font-size="16" font-weight="600" text-anchor="middle">+</text>
+
+            <!-- Bottom Row -->
+            <rect x="25" y="355" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="55" y="380" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">0</text>
+            
+            <rect x="100" y="355" width="60" height="40" rx="6" fill="rgba(30, 41, 59, 0.3)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="130" y="380" fill="#f1f5f9" font-size="14" font-weight="600" text-anchor="middle">.</text>
+            
+            <rect x="175" y="355" width="60" height="40" rx="6" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255,255,255,0.06)"/>
+            <text x="205" y="380" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">⌫</text>
+            
+            <!-- Equals Button -->
+            <rect x="250" y="355" width="65" height="40" rx="6" fill="url(#mockupEqGradient)" />
+            <text x="282.5" y="380" fill="#ffffff" font-size="16" font-weight="700" text-anchor="middle">=</text>
+
+            <!-- Gradients Definitions -->
+            <defs>
+              <linearGradient id="mockupBg" x1="0" y1="0" x2="340" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#0b111e"/>
+                <stop offset="100%" stop-color="#1e294b"/>
+              </linearGradient>
+              <linearGradient id="mockupEqGradient" x1="250" y1="355" x2="315" y2="395" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#8b5cf6" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       FEATURES SHOWCASE GRID
+       ============================================================================ -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Craftsmanship</span>
+        <h2 class="section-title">Engineered For Efficiency</h2>
+        <p class="section-subtitle">A collection of premium utility features meticulously wrapped in an immersive visual layout.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Eval-Free Safe Parser</h3>
+          <p class="feature-desc">Unlike extensions that rely on dangerous JavaScript eval(), CalcFlow features a custom mathematical AST tokenizer and recursive descent parser that fully satisfies Manifest V3 Security Policies.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Productivity Tracking</h3>
+          <p class="feature-desc">Gamify your math calculations! Automatically log lifetime statistics, track calculations today, and maintain consecutive day streaks to inspire building.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </div>
+          <h3 class="feature-title">Vivid Theme Ecosystem</h3>
+          <p class="feature-desc">Switch seamlessly between obsidian Slate, smooth Light cream, and hyper-vibrant Purple Neon Cyberpunk. Sync your work environment to match your aesthetic mood instantly.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">Auto-Save Quick Notes</h3>
+          <p class="feature-desc">Equipped with a built-in scratchpad scratch area that saves entries automatically to storage. Take note of complex calculations without losing focus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       INTERACTIVE LIVE PREVIEW (SANDBOX)
+       ============================================================================ -->
+  <section class="sandbox-section" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Live Interactive Sandbox</span>
+        <h2 class="section-title">Test Drive CalcFlow Online</h2>
+        <p class="section-subtitle">Click the buttons, open the tabs, edit notes, change themes, or input mathematical formulas using your keyboard below!</p>
+      </div>
+
+      <div class="sandbox-container">
+        <!-- The exact emulator structure -->
+        <div class="app-container" id="appContainer">
+          
+          <!-- Main Calculator Card -->
+          <main class="calculator-card">
+            <!-- Header Section -->
+            <header class="header">
+              <div class="brand">
+                <div class="logo-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2.5"/>
+                    <path d="M7 10H17M12 7V17M7 14H17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <h1>CalcFlow</h1>
+              </div>
+
+              <div class="header-actions">
+                <!-- Theme Cycle Button inside Mock -->
+                <button id="themeToggleBtn" class="btn-icon" title="Change Theme" aria-label="Cycle Theme">
+                  <svg class="theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                  </svg>
+                  <svg class="theme-icon-light hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                  </svg>
+                  <svg class="theme-icon-neon hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                  </svg>
+                </button>
+
+                <!-- Toggle History Panel inside Mock -->
+                <button id="toggleHistoryBtn" class="btn-icon" title="Calculation History" aria-label="Toggle History">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </button>
+
+                <!-- Toggle Notes Panel inside Mock -->
+                <button id="toggleNotesBtn" class="btn-icon" title="Quick Notes" aria-label="Toggle Notes">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </button>
+
+                <!-- Toggle Stats Panel inside Mock -->
+                <button id="toggleStatsBtn" class="btn-icon" title="Productivity Stats" aria-label="Toggle Stats">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
+                </button>
+              </div>
+            </header>
+
+            <!-- Display Container inside Mock -->
+            <section class="display-container">
+              <!-- Smart Expression Input Box -->
+              <div class="input-wrapper">
+                <input type="text" id="calcInput" class="calc-input" placeholder="0" autocomplete="off" spellcheck="false" aria-label="Calculator Expression Input" />
+              </div>
+
+              <!-- Output Box -->
+              <div class="result-wrapper">
+                <div class="live-preview-indicator hidden" id="previewIndicator">=</div>
+                <span id="calcPreview" class="calc-preview"></span>
+                <div class="result-row">
+                  <span class="equals-symbol">=</span>
+                  <span id="calcResult" class="calc-result">0</span>
+                </div>
+              </div>
+
+              <!-- Extra actions inside Mock -->
+              <div class="display-actions">
+                <button id="favoriteBtn" class="btn-display-action" title="Star this calculation" disabled>
+                  <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                  <span class="action-label">Star</span>
+                </button>
+                
+                <button id="copyResultBtn" class="btn-display-action" title="Copy result to clipboard">
+                  <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span class="action-label">Copy</span>
+                </button>
+              </div>
+            </section>
+
+            <!-- Keypad Section inside Mock -->
+            <section class="keypad-container" aria-label="Calculator Keypad">
+              <button class="btn btn-utility" data-action="clear" id="key-clear">C</button>
+              <button class="btn btn-utility" data-val="(">(</button>
+              <button class="btn btn-utility" data-val=")">)</button>
+              <button class="btn btn-operator" data-val="/" id="key-divide">÷</button>
+
+              <button class="btn btn-num" data-val="7">7</button>
+              <button class="btn btn-num" data-val="8">8</button>
+              <button class="btn btn-num" data-val="9">9</button>
+              <button class="btn btn-operator" data-val="*" id="key-multiply">×</button>
+
+              <button class="btn btn-num" data-val="4">4</button>
+              <button class="btn btn-num" data-val="5">5</button>
+              <button class="btn btn-num" data-val="6">6</button>
+              <button class="btn btn-operator" data-val="-" id="key-subtract">−</button>
+
+              <button class="btn btn-num" data-val="1">1</button>
+              <button class="btn btn-num" data-val="2">2</button>
+              <button class="btn btn-num" data-val="3">3</button>
+              <button class="btn btn-operator" data-val="+" id="key-add">+</button>
+
+              <button class="btn btn-num" data-val="0">0</button>
+              <button class="btn btn-num" data-val=".">.</button>
+              <button class="btn btn-utility" data-action="backspace" id="key-backspace">⌫</button>
+              <button class="btn btn-equals" data-action="evaluate" id="key-equals">=</button>
+            </section>
+
+            <!-- Motivational delights bottom inside Mock -->
+            <footer class="footer">
+              <div class="ticker-container">
+                <span id="motivationalTicker" class="ticker-message">Keep building 🚀</span>
+              </div>
+            </footer>
+          </main>
+
+          <!-- Collapsible side panel accessory inside Mock -->
+          <aside class="accessory-panel hidden" id="accessoryPanel" aria-label="Utility Panel">
+            <div class="panel-header">
+              <h2 id="panelTitle">Quick Notes</h2>
+              <button id="closePanelBtn" class="btn-icon" title="Close Panel" aria-label="Close Utility Panel">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Content Area of mock panels -->
+            <div class="panel-content">
+              <!-- View 1: Quick Notes -->
+              <div id="viewNotes" class="panel-view">
+                <div class="notes-container">
+                  <textarea id="notesArea" class="notes-textarea" placeholder="Jot down numbers, calculations, or steps here... Saves automatically!" aria-label="Quick Notes Scratchpad"></textarea>
+                  <div class="notes-status">
+                    <span class="status-dot" id="notesStatusDot" aria-hidden="true"></span>
+                    <span id="notesStatusText">All changes saved</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 2: History -->
+              <div id="viewHistory" class="panel-view hidden">
+                <div class="history-tabs">
+                  <button id="tabAllHistory" class="btn-tab active">All History</button>
+                  <button id="tabStarred" class="btn-tab">Starred</button>
+                </div>
+                
+                <div class="history-actions-row">
+                  <span class="history-count" id="historyCountText">0 entries</span>
+                  <button id="clearAllHistoryBtn" class="btn-text-action">Clear All</button>
+                </div>
+
+                <div class="history-scroll-container" id="historyList">
+                  <div class="empty-state" id="historyEmptyState">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <p>No calculations yet</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 3: Stats -->
+              <div id="viewStats" class="panel-view hidden">
+                <div class="stats-container">
+                  <div class="stat-card">
+                    <div class="stat-icon icon-blue">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                      </svg>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-label">Calculations Today</span>
+                      <span id="statsToday" class="stat-val">0</span>
+                    </div>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-icon icon-purple">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 17 22 12"></polyline>
+                      </svg>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-label">Total Calculations</span>
+                      <span id="statsLifetime" class="stat-val">0</span>
+                    </div>
+                  </div>
+
+                  <div class="stat-card">
+                    <div class="stat-icon icon-green">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M8 12h8"></path>
+                      </svg>
+                    </div>
+                    <div class="stat-info">
+                      <span class="stat-label">Productive Streak</span>
+                      <span id="statsStreak" class="stat-val">1 Day</span>
+                    </div>
+                  </div>
+
+                  <div class="stats-quote">
+                    <p>"Consistency is the companion of mathematical mastery."</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================================
+       SUPPORT CENTER & FAQS
+       ============================================================================ -->
+  <section class="support-section" id="support">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Support & Resources</span>
+        <h2 class="section-title">Help Center & Frequently Asked</h2>
+        <p class="section-subtitle">Have questions about how CalcFlow processes formulas or uses local storage? We have answers.</p>
+      </div>
+
+      <div class="support-grid">
+        <!-- FAQ Accordion Container -->
+        <div class="faq-container">
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-header">
+              Why does CalcFlow require storage permissions?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              CalcFlow only uses standard, offline <code>chrome.storage.local</code> capabilities to automatically store your customizable active theme settings, calculation scratchpad logs, quick motivates streak counters, and math notes. No remote network connections are requested or tracked, guaranteeing complete privacy.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-header">
+              What does "Eval-Free Math Parser" mean?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              Standard calculators use JavaScript's built-in <code>eval()</code> statement to resolve equations, which runs arbitrary strings as code. This poses severe script injection security vulnerabilities. CalcFlow implements a secure **Lexical Tokenizer and Recursive Descent Parser** built strictly in accordance with modern security principles, which handles calculations entirely in isolation.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-header">
+              Does CalcFlow support custom formulas and variables?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              CalcFlow currently supports standard arithmetic infix operations (PEMDAS priority math), floats, parenthetical nesting, decimal operations, percentages, and modulo operators. You can also utilize the **Quick Notes** side panel to temporarily jot down numbers and copy/paste them back into the active expression.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-header">
+              Is CalcFlow fully compliant with Manifest V3?
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="faq-body">
+              Yes, 100%! All dependencies, stylesheets, and mathematical models are completely packaged locally in the extension. No remote code is retrieved or executed, matching Chrome Extension Web Store's strictest Manifest V3 guidelines.
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Support Card -->
+        <div class="support-card">
+          <h3 class="support-card-title">Still Need Help?</h3>
+          <p class="support-card-subtitle">Have a bug to report or feature suggestions? Send a motivation message to the developer team below!</p>
+          
+          <form id="supportForm" novalidate>
+            <div class="form-group">
+              <label for="formName" class="form-label">Full Name</label>
+              <input type="text" id="formName" class="form-input" placeholder="e.g. Jean Fourier" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="formEmail" class="form-label">Email Address</label>
+              <input type="email" id="formEmail" class="form-input" placeholder="e.g. jean.fourier@math.org" required>
+            </div>
+
+            <div class="form-group">
+              <label for="formSubject" class="form-label">Subject</label>
+              <input type="text" id="formSubject" class="form-input" placeholder="e.g. Feature Suggestion" required>
+            </div>
+
+            <div class="form-group">
+              <label for="formMessage" class="form-label">Message Details</label>
+              <textarea id="formMessage" class="form-input" rows="4" placeholder="Describe your query in detail..." style="resize: vertical; min-height: 100px;" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary btn-form-submit" id="submitFormBtn">
+              Send Ticket
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================================
+       FOOTER
+       ============================================================================ -->
+  <footer class="footer-nav">
+    <div class="container footer-grid">
+      <div class="footer-info">
+        <a href="#" class="nav-brand">
+          <div class="logo-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2.5"/>
+              <path d="M7 10H17M12 7V17M7 14H17" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span>CalcFlow</span>
+        </a>
+        <p class="footer-desc">Premium glassmorphic extensions empowering developers, students, and creators to compute equations securely and beautifully.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Extension</h4>
+        <div class="footer-col-links">
+          <a href="#features">Key Features</a>
+          <a href="#demo">Try Web Demo</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Support</h4>
+        <div class="footer-col-links">
+          <a href="#support">Help Center & FAQ</a>
+          <a href="#support">Submit motivation ticket</a>
+          <a href="https://chrome.google.com/webstore/devconsole" target="_blank" rel="noopener">Chrome Developer Console</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 CalcFlow. All rights reserved. Locally crafted with offline security.</p>
+      <div class="footer-socials">
+        <a href="https://github.com" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Github Repository">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================================
+       TOAST NOTIFICATION CONTAINER
+       ============================================================================ -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Main Website Script -->
+  <script src="script.js"></script>
+</body>
+</html>
